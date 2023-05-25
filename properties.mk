@@ -43,6 +43,10 @@ PRODUCT_PROPERTY_OVERRIDES += \
 PRODUCT_PROPERTY_OVERRIDES += \
     vendor.qcom.bluetooth.soc=pronto
 
+# Blur
+PRODUCT_SYSTEM_DEFAULT_PROPERTIES += \
+    ro.surface_flinger.supports_background_blur=0
+
 # BPF
 PRODUCT_PROPERTY_OVERRIDES += \
     ro.kernel.ebpf.supported=true
@@ -197,7 +201,8 @@ PRODUCT_PROPERTY_OVERRIDES += \
     ro.vendor.sensors.facing=false \
     ro.vendor.sensors.scrn_ortn=false \
     ro.vendor.sensors.cmc=false \
-    ro.vendor.sensors.pedometer=false
+    ro.vendor.sensors.pedometer=false \
+    ro.hardware.sensors=aljeter
 
 # Trim properties
 PRODUCT_PROPERTY_OVERRIDES += \

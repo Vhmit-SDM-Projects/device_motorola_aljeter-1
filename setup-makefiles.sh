@@ -8,7 +8,7 @@
 
 set -e
 
-DEVICE_COMMON=msm8937-common
+DEVICE=aljeter
 VENDOR=motorola
 
 # Load extract_utils and do some sanity checks
@@ -24,28 +24,13 @@ if [ ! -f "${HELPER}" ]; then
 fi
 source "${HELPER}"
 
-# Initialize the helper for common
-setup_vendor "${DEVICE_COMMON}" "${VENDOR}" "${ANDROID_ROOT}" true
+# Initialize the helper
+setup_vendor "${DEVICE}" "${VENDOR}" "${ANDROID_ROOT}"
 
 # Warning headers and guards
-write_headers "ahannah cedric hannah james montana rhannah aljeter"
+write_headers
 
-# The standard common blobs
 write_makefiles "${MY_DIR}/proprietary-files.txt" true
 
 # Finish
 write_footers
-
-if [ -s "${MY_DIR}/../${DEVICE}/proprietary-files.txt" ]; then
-    # Reinitialize the helper for device
-    setup_vendor "${DEVICE}" "${VENDOR}" "${ANDROID_ROOT}" false
-
-    # Warning headers and guards
-    write_headers
-
-    # The standard device blobs
-    write_makefiles "${MY_DIR}/../${DEVICE}/proprietary-files.txt" true
-
-    # Finish
-    write_footers
-fi
