@@ -6,13 +6,6 @@
 
 DEVICE_PATH := device/motorola/aljeter
 
-# Bootloader
-TARGET_BOOTLOADER_BOARD_NAME := MSM8937
-TARGET_NO_BOOTLOADER := true
-
-# Platform
-TARGET_BOARD_PLATFORM := msm8937
-
 # Architecture
 TARGET_ARCH := arm64
 TARGET_ARCH_VARIANT := armv8-a
@@ -27,7 +20,8 @@ TARGET_2ND_CPU_ABI := armeabi-v7a
 TARGET_2ND_CPU_ABI2 := armeabi
 TARGET_2ND_CPU_VARIANT := cortex-a53
 
-BUILD_BROKEN_DUP_RULES := true
+# Assert
+TARGET_OTA_ASSERT_DEVICE := aljeter
 
 # Audio
 AUDIO_FEATURE_ENABLED_AAC_ADTS_OFFLOAD := true
@@ -55,14 +49,27 @@ BOARD_SUPPORTS_SOUND_TRIGGER := true
 BOARD_USES_ALSA_AUDIO := true
 USE_CUSTOM_AUDIO_POLICY := 1
 
-# Assert
-TARGET_OTA_ASSERT_DEVICE := aljeter
-
-# Bluetooth
-BOARD_BLUETOOTH_BDROID_BUILDCFG_INCLUDE_DIR := $(DEVICE_PATH)/bluetooth
-
 # Boot animation
 TARGET_BOOTANIMATION_HALF_RES := true
+
+# Boot-image
+BOARD_KERNEL_BASE := 0x80000000
+BOARD_KERNEL_PAGESIZE := 2048
+BOARD_KERNEL_TAGS_OFFSET := 0x00000100
+BOARD_RAMDISK_OFFSET := 0x1000000
+BOARD_MKBOOTIMG_ARGS := --ramdisk_offset $(BOARD_RAMDISK_OFFSET) --tags_offset $(BOARD_KERNEL_TAGS_OFFSET)
+BOARD_KERNEL_CMDLINE += androidboot.selinux=permissive
+
+# Bootloader / Platform
+TARGET_BOOTLOADER_BOARD_NAME := MSM8937
+TARGET_NO_BOOTLOADER := true
+TARGET_BOARD_PLATFORM := msm8937
+
+# Build
+BUILD_BROKEN_DUP_RULES := true
+
+# Bluetooth
+BOARD_BLUETOOTH_BDROID_BUILDCFG_INCLUDE_DIR := $(DEVICE_PATH)/configs/bluetooth
 
 # Charger
 BACKLIGHT_PATH := /sys/class/leds/lcd-backlight/brightness
@@ -95,30 +102,20 @@ TARGET_QCOM_MEDIA_VARIANT := caf-msm8996
 TARGET_QCOM_DISPLAY_VARIANT := caf-msm8996
 
 # HIDL
-DEVICE_FRAMEWORK_MANIFEST_FILE := $(DEVICE_PATH)/framework_manifest.xml
-DEVICE_MANIFEST_FILE := $(DEVICE_PATH)/manifest.xml
-DEVICE_MATRIX_FILE   := $(DEVICE_PATH)/compatibility_matrix.xml
+DEVICE_FRAMEWORK_MANIFEST_FILE := $(DEVICE_PATH)/configs/vintf/framework_manifest.xml
+DEVICE_MANIFEST_FILE := $(DEVICE_PATH)/configs/vintf/manifest.xml
+DEVICE_MATRIX_FILE   := $(DEVICE_PATH)/configs/vintf/compatibility_matrix.xml
 TARGET_FS_CONFIG_GEN += \
-    $(DEVICE_PATH)/config.fs \
-    $(DEVICE_PATH)/mot_aids.fs
+    $(DEVICE_PATH)/configs/device/config.fs \
+    $(DEVICE_PATH)/configs/device/mot_aids.fs
 
 # Kernel
-BOARD_KERNEL_BASE := 0x80000000
-BOARD_KERNEL_CMDLINE := console=ttyHSL0,115200,n8 androidboot.console=ttyHSL0 androidboot.hardware=qcom user_debug=30 msm_rtb.filter=0x237 ehci-hcd.park=3 androidboot.bootdevice=7824900.sdhci lpm_levels.sleep_disabled=1 earlycon=msm_hsl_uart,0x78B0000 vmalloc=400M androidboot.usbconfigfs=true
-BOARD_KERNEL_CMDLINE += androidboot.selinux=permissive
-BOARD_KERNEL_CMDLINE += loop.max_part=7
-BOARD_KERNEL_PAGESIZE := 2048
-BOARD_KERNEL_TAGS_OFFSET := 0x00000100
-BOARD_RAMDISK_OFFSET := 0x1000000
+BOARD_KERNEL_CMDLINE := console=ttyHSL0,115200,n8 androidboot.console=ttyHSL0 androidboot.hardware=qcom user_debug=30 msm_rtb.filter=0x237 ehci-hcd.park=3 androidboot.bootdevice=7824900.sdhci lpm_levels.sleep_disabled=1 earlycon=msm_hsl_uart,0x78B0000 vmalloc=400M androidboot.usbconfigfs=true loop.max_part=7
 BOARD_KERNEL_SEPARATED_DT := true
 BOARD_KERNEL_IMAGE_NAME := Image.gz
 TARGET_KERNEL_CONFIG := aljeter_defconfig
-BOARD_MKBOOTIMG_ARGS := --ramdisk_offset $(BOARD_RAMDISK_OFFSET) --tags_offset $(BOARD_KERNEL_TAGS_OFFSET)
-
-TARGET_KERNEL_SOURCE := kernel/motorola/jeter
+TARGET_KERNEL_SOURCE := kernel/motorola/aljeter
 TARGET_KERNEL_VERSION := 4.9
-
-# Clang
 TARGET_KERNEL_CLANG_COMPILE := true
 TARGET_KERNEL_CLANG_VERSION := proton
 TARGET_KERNEL_CLANG_PATH := $(shell pwd)/prebuilts/clang/host/linux-x86/proton-clang
@@ -149,11 +146,7 @@ BOARD_USES_QCOM_HARDWARE := true
 
 # Recovery
 BOARD_USES_FULL_RECOVERY_IMAGE := true
-ifeq ($(PRODUCT_FULL_TREBLE_OVERRIDE), true)
-TARGET_RECOVERY_FSTAB := $(DEVICE_PATH)/rootdir/etc/fstab_legacy.qcom
-else
 TARGET_RECOVERY_FSTAB := $(DEVICE_PATH)/rootdir/etc/fstab.qcom
-endif
 TARGET_RECOVERY_UPDATER_LIBS := librecovery_updater_motorola
 
 # Releasetools
