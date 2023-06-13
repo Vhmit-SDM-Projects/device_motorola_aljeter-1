@@ -30,7 +30,9 @@ setup_vendor "${DEVICE}" "${VENDOR}" "${ANDROID_ROOT}"
 # Warning headers and guards
 write_headers
 
+# The standard blobs
 write_makefiles "${MY_DIR}/proprietary-files.txt" true
+write_makefiles "${MY_DIR}/proprietary-files-qc.txt" true
 
 # Finish
 write_footers
