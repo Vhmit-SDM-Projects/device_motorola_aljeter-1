@@ -33,6 +33,7 @@ write_headers
 # The standard blobs
 write_makefiles "${MY_DIR}/proprietary-files.txt" true
 write_makefiles "${MY_DIR}/proprietary-files-qc.txt" true
+write_makefiles "${MY_DIR}/proprietary-files-caf.txt" true
 
 # Finish
 write_footers

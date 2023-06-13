@@ -23,7 +23,7 @@ from hashlib import sha1
 device = 'aljeter'
 vendor = 'motorola'
 
-lines = [ line for line in open('proprietary-files-qc.txt', 'r') ]
+lines = [ line for line in open('proprietary-files-caf.txt', 'r') ]
 vendorPath = '../../../vendor/' + vendor + '/' + device + '/proprietary'
 needSHA1 = False
 
@@ -68,6 +68,6 @@ if len(sys.argv) == 2 and sys.argv[1] == '-c':
 else:
     update()
 
-with open('proprietary-files-qc.txt', 'w') as file:
+with open('proprietary-files-caf.txt', 'w') as file:
   for line in lines:
     file.write(line)
