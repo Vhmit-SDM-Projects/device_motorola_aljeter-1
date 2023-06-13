@@ -8,21 +8,18 @@ git clone -b lineage-18.1 https://github.com/LineageOS/android_system_qcom syste
 git clone -b lineage-18.1 https://github.com/LineageOS/android_hardware_motorola hardware/motorola
 echo ""
 
-# Kernel
+# Clang
 echo "Cloning Clang Kernel"
 git clone --depth=1 -b master https://github.com/kdrag0n/proton-clang prebuilts/clang/host/linux-x86/proton-clang
 echo ""
 
 # DtbTools lineage
 echo "cloning dtbTools lineage"
-mkdir out/
-mkdir out/host/
-mkdir out/host/linux-x86/
-mkdir out/host/linux-x86/bin
+mkdir -p out/host/linux-x86/bin
 cd out/host/linux-x86/bin
 wget -c https://github.com/krasCGQ/scripts/raw/master/prebuilts/bin/dtbToolLineage
 chmod +777 dtbToolLineage
-cd ../../../..
+cd -
 echo ""
 
 # HAL's
@@ -33,4 +30,12 @@ rm -rf hardware/qcom-caf/msm8996/media
 git clone https://github.com/LineageOS/android_hardware_qcom_media --single-branch -b lineage-18.1-caf-msm8996 hardware/qcom-caf/msm8996/media
 rm -rf hardware/qcom-caf/msm8996/display
 git clone https://github.com/LineageOS/android_hardware_qcom_display --single-branch -b lineage-18.1-caf-msm8996 hardware/qcom-caf/msm8996/display
+echo ""
+
+# Kernel
+echo "Cloning Kernel and Push KernelSU"
+git clone -b eleven https://github.com/Vhmit/kernel_motorola_aljeter kernel/motorola/aljeter
+cd kernel/motorola/aljeter
+rm -rf KernelSU && curl -LSs "https://raw.githubusercontent.com/tiann/KernelSU/main/kernel/setup.sh" | bash -
+cd -
 echo ""
