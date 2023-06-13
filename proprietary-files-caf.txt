@@ -1,4 +1,4 @@
-### All blobs from this list, to CAF A10
+### All blobs from this list, to CAF A10 and A11
 
 # CNE - from LA.UM.8.6.2.r1-07600-89xx.0
 etc/cne/Nexus/ATT/ATT_profiles.xml|33e568627fd3f94dc45bca1c01ad10e6d8fb5b52
@@ -88,6 +88,22 @@ vendor/lib64/vendor.qti.hardware.data.connection@1.1.so|361cb0c9a3df68248f38db1a
 vendor/lib64/vendor.qti.hardware.data.dynamicdds@1.0.so|1b03b7d349d313457c4178836ab5962e09e8607e
 vendor/lib64/vendor.qti.hardware.data.iwlan@1.0.so|3fe8a5cfd17c52933e13a85fbbd85ac2e7c40f0b
 vendor/lib64/vendor.qti.hardware.data.latency@1.0.so|b5eb170acad879f5cb1c37383bd7a868960cae77
+
+# Gatekeeper Hardware - from LA.UM.9.6.2.r1-04200-89xx.0
+vendor/lib/hw/gatekeeper.msm8937.so|6569776d73f57c9a213a38707351db6e8ffa68a6
+vendor/lib64/hw/gatekeeper.msm8937.so|9a7297653a3b7af0a5922ac93c554e4f13e6958f
+
+# Keymaster - from LA.UM.9.6.2.r1-04200-89xx.0
+vendor/lib/libkeymasterutils.so|f4272fbd9055ad44858f26d8aa7bc7cf0b1742ac
+vendor/lib/libkeymasterprovision.so|493e8fae8809887c963eed6a0638b7a589aff374
+vendor/lib/libkeymasterdeviceutils.so|6ffe42276f90038f8cf2b028946034d54765c618
+vendor/lib64/libkeymasterutils.so|db21b2fec8e5808c562665746d0394575004070b
+vendor/lib64/libkeymasterprovision.so|b961af6561ba191647dda8b555ce1d15f8f68974
+vendor/lib64/libkeymasterdeviceutils.so|c75744b552b6b94861be72a66ebee26e3b8c14f0
+
+# Keystore Hardware - from LA.UM.9.6.2.r1-04200-89xx.0
+vendor/lib/hw/keystore.msm8937.so|620b5080bc7c17f2c5ef76832ef915edd3ce30fa
+vendor/lib64/hw/keystore.msm8937.so|03786c28112bb9e67958ee72ec1b3852bc9c6b9f
 
 # QC RIL - from LA.UM.8.6.2.r1-06600-89xx.0
 vendor/bin/hw/qcrild|55a9c79ca552f4b9f0084afaae408d005cc445c2
