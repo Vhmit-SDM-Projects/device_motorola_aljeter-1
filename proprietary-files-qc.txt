@@ -950,9 +950,6 @@ vendor/lib64/vendor.qti.hardware.qdutils_disp@1.0.so|4c130641f85b8707acbc852eadc
 vendor/lib64/libdisp-aba.so|0620cb7c70c36de2757a34ae3bf545044ec6c34c
 vendor/lib64/libdisplayconfig.qti.so|e2a3971b331620828a6a7163b15170aad9935754
 
-# RIL - from daisy - QKQ1.191002.002 V11.0.21.0.QDLMIXM
-vendor/bin/netmgrd|8752fb8cb74bd402a13ff291b7d2074415350984
-
 # Thermal - from dpl_sprout - RKQ1.200928.002
 vendor/bin/thermal-engine|bacf88c801ba037e1e1d2671937404184eb8964b
 vendor/etc/init/init_thermal-engine.rc|f0d14aa4734b2e8afd61a4eed73238187b268f48
