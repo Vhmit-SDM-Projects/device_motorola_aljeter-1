@@ -263,6 +263,9 @@ PRODUCT_PACKAGES+= \
     vendor.qti.hardware.perf@2.1 \
     vendor.qti.hardware.perf@2.1.vendor
 
+PRODUCT_PACKAGES += \
+    libqti-perfd-client
+
 PRODUCT_COPY_FILES += \
     $(LOCAL_PATH)/configs/perf/commonresourceconfigs.xml:$(TARGET_COPY_OUT_VENDOR)/etc/perf/commonresourceconfigs.xml \
     $(LOCAL_PATH)/configs/perf/perfboostsconfig.xml:$(TARGET_COPY_OUT_VENDOR)/etc/perf/perfboostsconfig.xml \
